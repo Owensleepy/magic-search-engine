@@ -1,0 +1,69 @@
+1  # Data from https://scryfall.com/sets/sld?q=set%3Asld&as=checklist&order=set&dir=&jump_to=showcasemarchofthemachinevol1
+2  # Assumptions:
+3  # Gilded and etched foils appear at same rate as traditional foils in the slots they can appear in.
+4   pack:
+5    foil_fullart_basic: 1
+6    foil_common: 4
+7    foil_uncommon: 2
+8    common_uncommon_showcase: 2
+9    foil_rare_mythic: 1
+10   extended_rare_mythic: 1
+11   extended_commander: 1
+12   rare_mythic_showcase: 1
+13   foil_showcase_cu_slot:
+14     - foil_common_uncommon_showcase: 1
+         chance: 35
+15     - gilded_common_uncommon_showcase: 1
+         chance: 25
+16  foil_showcase_rm_slot:
+17     -foil_rare_mythic_showcase: 1
+         chance: 280
+18    - etched_rare_mythic_showcase: 1
+        chance: 13
+19    - gilded_rare_mythic_showcase: 1
+        chance: 45
+20  sheets:
+21  foil_fullart_basic:
+22  foil: true
+23  query: "r:b is:fullart"
+24  foil_rare_mythic:
+25  foil: true
+26  use: rare_mythic
+27  extended_rare_mythic:
+    filter: "e:snc frame:extendedart"
+    use: rare_mythic
+  extended_commander:
+    filter: "e:ncc frame:extendedart"
+    use: rare_mythic
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper is:triome"
+      rate: 2
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:triome"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (t:planeswalker or Urabrask) number<=360"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:planeswalker -Urabrask"
+      rate: 2
+  gilded_common_uncommon_showcase:
+    foil: true
+    filter: "e:snc promo:gilded"
+    use: common_uncommon
+  gilded_rare_mythic_showcase:
+    foil: true
+    filter: "e:snc promo:gilded"
+    use: rare_mythic
+  etched_rare_mythic_showcase:
+    foil: true
+    filter: "e:snc frame:etched"
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper is:triome"
+      rate: 2
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper -is:triome"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper (t:planeswalker or Urabrask) number<=360"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper -t:planeswalker -Urabrask"
+      rate: 2
